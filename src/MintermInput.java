@@ -142,7 +142,7 @@ public class MintermInput implements Comparable<MintermInput> //object to hold i
 	        
 	        // Keep track of the difference between the minterms
 	        int bitDiff = 0;
-	        String output = "";
+	        StringBuilder output = new StringBuilder();
 
 	        // Iterate through the bits in this Minterm's value
 	        for (int i = 0; i < this.minBits.length(); i++) 
@@ -151,13 +151,13 @@ public class MintermInput implements Comparable<MintermInput> //object to hold i
 	            if (this.minBits.charAt(i) != minterm.minBits.charAt(i)) 
 	            {
 	                bitDiff += 1;
-	                output += "-";
+	                output.append("-");
 	            }
 
 	            // There is not a difference
 	            else
 	            {
-	                output += this.minBits.charAt(i);
+	                output.append(this.minBits.charAt(i));
 	            }
 	            
 	            // The difference has exceeded 1
@@ -178,6 +178,6 @@ public class MintermInput implements Comparable<MintermInput> //object to hold i
 	        	mergedMinterms[i + this.minDec.length] = minterm.minDec[i];
 	        }
 
-	        return new MintermInput(mergedMinterms, output);
+	        return new MintermInput(mergedMinterms, output.toString());
 	    }
 	}
